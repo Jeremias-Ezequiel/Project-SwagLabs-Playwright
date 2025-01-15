@@ -18,4 +18,9 @@ export class CheckoutStepTwoPage extends BasePage{
         await this.expect(this.cancelButton).toBeVisible();
         await this.expect(this.finishButton).toBeVisible();
     }
+
+    async finishCheckout() : Promise<void> {
+        await this.expect(this.finishButton).toBeVisible();
+        await this.finishButton.click();
+    }
 }
