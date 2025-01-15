@@ -1,5 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 import { BasePage } from "./BasePage";
+import { isBoxedPrimitive } from "util/types";
 
 export class InventoryPage extends BasePage{
     private filterDropdown: Locator;
@@ -29,6 +30,7 @@ export class InventoryPage extends BasePage{
 
     // Opens the filter dropdown menu
     async openFilterDropdown() : Promise<void>{
+        await this.filterDropdown.isVisible();
         await this.clicElement(this.filterDropdown); 
     }
 
@@ -76,4 +78,35 @@ export class InventoryPage extends BasePage{
         }
         await this.filterDropdown.selectOption(option);
     }
+
+    async getItemNames() : Promise<string[]>{
+        const itemDescriptions = await this.containerItems.locator('[data-test="inventory-item-description"]')
+        const quantity = await itemDescriptions.count(); 
+        let itemNames : string[] = []; 
+
+        for(let i = 0; i < quantity; i++){
+            const productName = await itemDescriptions
+                .nth(i)
+                .locator('[data-test="inventory-item-name"]')
+                .textContent();
+
+            if(productName !== null){
+                itemNames.push(productName);
+            }
+        }
+
+        return itemNames;
+    }
+
+    isAlphabeticallySortedArray(array : string[], ascending : boolean = true) : boolean{
+        
+        const sortedArray = [...array].sort((a : string,b : string) => a.localeCompare(b))
+
+        if(!ascending){
+            sortedArray.reverse(); 
+        }
+
+        return JSON.stringify(array) === JSON.stringify(sortedArray);
+    }
+
 }

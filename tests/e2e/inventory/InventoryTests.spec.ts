@@ -1,4 +1,4 @@
-import test from "@playwright/test";
+import {test, expect } from "@playwright/test";
 import { CommonFlows } from "../../../utils/CommonFlows";
 import { InventoryPage } from "../../pages/InventoryPage";
 import { NavBarPage } from "../../pages/NavBarPage";
@@ -13,7 +13,9 @@ test.describe('Inventory Tests', () => {
         navBarPage = new NavBarPage(page); 
         inventoryPage = new InventoryPage(page); 
         commonFlows = new CommonFlows(page);
-        await commonFlows.logInSuccessful(); 
+        await page.goto('');
+        await commonFlows.logInSuccessfully(); 
+
     })
 
     test('Add item at the cart', async ({ page }) => {
@@ -29,10 +31,19 @@ test.describe('Inventory Tests', () => {
         await navBarPage.verifyShoppingCartLogoIsEmpty(); 
     })
     
-    test('Filter by Name (Z to A)', async ({ page }) => {
+    test('Filter the products by Name (Z to A)', async ({ page }) => {
         const filter : string = 'Name (Z to A)';
-        
+        await inventoryPage.openFilterDropdown(); 
+        await inventoryPage.filterByOption(filter); 
+        const productNames : string[] = await inventoryPage.getItemNames(); 
+        const result = inventoryPage.isAlphabeticallySortedArray(productNames,false);
+        await expect(result).toBe(true);
     })
-    
+
+    test('Check order of the items', async ({ page }) => {
+        const productNames : string[] = await inventoryPage.getItemNames();
+        const result = inventoryPage.isAlphabeticallySortedArray(productNames,true);
+        await expect(result).toBe(true);
+    })
         
 })
