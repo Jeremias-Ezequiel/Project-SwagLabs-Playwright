@@ -1,10 +1,10 @@
-import {Page, Locator} from '@playwright/test'
-import { BasePage } from '../tests/pages/BasePage';
-import { LoginPage } from '../tests/pages/LoginPage';
+import { Page } from '@playwright/test'
+import { BasePage } from '../pages/BasePage';
+import { LoginPage } from '../pages/LoginPage';
 import {credentials} from './config'
-import { BurgerMenuPage } from '../tests/pages/BurgerMenuPage';
-import { NavBarPage } from '../tests/pages/NavBarPage';
-import { InventoryPage } from '../tests/pages/InventoryPage';
+import { BurgerMenuPage } from '../pages/BurgerMenuPage';
+import { NavBarPage } from '../pages/NavBarPage';
+import { InventoryPage } from '../pages/InventoryPage';
 
 export class CommonFlows extends BasePage{
     private loginPage : LoginPage;

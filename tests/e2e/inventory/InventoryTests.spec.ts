@@ -1,7 +1,7 @@
-import {test, expect } from "@playwright/test";
-import { CommonFlows } from "../../../utils/CommonFlows";
-import { InventoryPage } from "../../pages/InventoryPage";
-import { NavBarPage } from "../../pages/NavBarPage";
+import { test, expect } from "@playwright/test";
+import { NavBarPage } from "../../../src/pages/NavBarPage";
+import { InventoryPage } from "../../../src/pages/InventoryPage";
+import { CommonFlows } from "../../../src/utils/CommonFlows";
 
 
 test.describe('Inventory Tests', () => {

@@ -1,9 +1,6 @@
 import test, { expect } from "@playwright/test";
-import { LoginPage } from "../../pages/LoginPage";
-import exp from "constants";
-import { CommonFlows } from "../../../utils/CommonFlows";
-
- 
+import { CommonFlows } from "../../../src/utils/CommonFlows";
+import { LoginPage } from "../../../src/pages/LoginPage"; 
 
 test.describe('Login page tests', () => {
     let loginPage : LoginPage;
