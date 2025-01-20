@@ -1,4 +1,5 @@
-const passwordForAllUsers = 'secret_sauce'; 
+const passwordForAllUsers = 'secret_sauce';
+const usernameValid = 'standard_user'; 
 
 export interface UserCredential {
     username : string,
@@ -6,7 +7,7 @@ export interface UserCredential {
 }
 
 export const validCredential : UserCredential = {
-    username : 'standard_user',
+    username : usernameValid,
     password :  passwordForAllUsers
 }
 
@@ -36,3 +37,30 @@ export const validUsersCredentials : Array<UserCredential> = [
         password : passwordForAllUsers
     },
 ]
+
+export const invalidUsersCredentials : Record<string, UserCredential>  = {
+    missingUsername: {
+        username : '',
+        password : passwordForAllUsers
+    },
+    missingPassword : {
+        username : usernameValid,
+        password : ''
+    },
+    invalidUser : {
+        username : 'example123',
+        password : 'example123'
+    },
+    invalidUsername : {
+        username : 'example123',
+        password : passwordForAllUsers
+    },
+    invalidPassword : {
+        username : usernameValid,
+        password : 'example123'
+    },
+    specialCharactersUsername : {
+        username : '"#$"#$',
+        password : passwordForAllUsers
+    }
+}
