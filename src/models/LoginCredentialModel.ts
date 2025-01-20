@@ -10,7 +10,7 @@ export const validCredential : UserCredential = {
     password :  passwordForAllUsers
 }
 
-export const validUsersLogin : Array<UserCredential> = [
+export const validUsersCredentials : Array<UserCredential> = [
     {
         username : 'standard_user',
         password : passwordForAllUsers

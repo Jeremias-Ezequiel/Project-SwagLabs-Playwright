@@ -1,13 +1,13 @@
 import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { LoginPage } from "../../src/pages/LoginPage"; 
-import { validCredential, UserCredential } from "../../src/models/LoginCredentialModel";
+import { validCredential, UserCredential, validUsersCredentials } from "../../src/models/LoginCredentialModel";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
 
 test.describe('Login Page Tests - Regression', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows; 
-    let user : UserCredential; 
+    let user : UserCredential;  
     const inventoryURL : string = 'https://www.saucedemo.com/inventory.html';
 
     test.beforeEach(async ({ page }) => {
@@ -75,4 +75,18 @@ test.describe('Login Page Tests - Regression', () => {
         await loginPage.verifyErrorMessage(userNotExist); 
     })
     
+    // Grouping for tests with multiple valid credentials
+    test.describe('Valid Users Credentials Tests', () => {
+        validUsersCredentials.forEach((credential) => {
+            const {username, password} = credential;
+    
+            test(`Login test for user: ${username}`, async ({ page }) => {
+                await loginPage.fillLoginForm(username,password);
+                await expect(page).toHaveURL(inventoryURL);
+            }); 
+            
+        });
+    })
+    
+
 })
