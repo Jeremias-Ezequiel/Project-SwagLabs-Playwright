@@ -4,7 +4,7 @@ import { LoginPage } from "../../src/pages/LoginPage";
 import { validCredential, UserCredential } from "../../src/models/LoginCredentialModel";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
 
-test.describe('Login page tests', () => {
+test.describe('Login Page Tests - Smoke', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows; 
     let user : UserCredential; 

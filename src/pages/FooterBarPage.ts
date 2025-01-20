@@ -26,12 +26,12 @@ export class FooterBarPage extends BasePage{
         await this.expect(this.linkedinLink).toBeEnabled();
 
         // Verify that these containt the correct href value.
-        const hrefTwitter = this.twitterLink.getAttribute('href');
-        const hrefFacebook = this.facebookLink.getAttribute('href');
-        const hrefLinkedin = this.linkedinLink.getAttribute('href');
+        const hrefTwitter = await this.twitterLink.getAttribute('href');
+        const hrefFacebook = await this.facebookLink.getAttribute('href');
+        const hrefLinkedin = await this.linkedinLink.getAttribute('href');
         
-        await this.expect(hrefTwitter).toBe('https://x.com/saucelabs');
-        await this.expect(hrefFacebook).toBe('https://www.facebook.com/saucelabs');
-        await this.expect(hrefLinkedin).toBe('https://www.linkedin.com/company/sauce-labs/');
+        this.expect(hrefTwitter).toBe('https://twitter.com/saucelabs');
+        this.expect(hrefFacebook).toBe('https://www.facebook.com/saucelabs');
+        this.expect(hrefLinkedin).toBe('https://www.linkedin.com/company/sauce-labs/');
     }
 }

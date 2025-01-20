@@ -4,7 +4,7 @@ import { InventoryPage } from "../../src/pages/InventoryPage";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { FilterOptions } from "../../src/models/FilterProductModel";
 
-test.describe('Inventory Tests', () => {
+test.describe('Inventory Page Tests - Smoke', () => {
     let commonFlows : CommonFlows;  
     let inventoryPage : InventoryPage;
     let navBarPage : NavBarPage;
