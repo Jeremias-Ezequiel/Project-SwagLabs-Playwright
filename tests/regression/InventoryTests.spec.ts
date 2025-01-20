@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { NavBarPage } from "../../../src/pages/NavBarPage";
-import { InventoryPage } from "../../../src/pages/InventoryPage";
-import { CommonFlows } from "../../../src/utils/CommonFlows";
+import { NavBarPage } from "../../src/pages/NavBarPage";
+import { InventoryPage } from "../../src/pages/InventoryPage";
+import { CommonFlows } from "../../src/utils/CommonFlows";
 
 
 test.describe('Inventory Tests', () => {
@@ -15,7 +15,6 @@ test.describe('Inventory Tests', () => {
         commonFlows = new CommonFlows(page);
         await page.goto('');
         await commonFlows.logInSuccessfully(); 
-
     })
 
     test('Add item at the cart', async ({ page }) => {
@@ -23,6 +22,11 @@ test.describe('Inventory Tests', () => {
         await inventoryPage.addItemToCart("Sauce Labs Backpack"); 
         await navBarPage.verifyItemsInCartLogo("1"); 
     })
+
+    test('Verify Inventory page test', async ({ page }) => {
+        await inventoryPage.verifyInventoryPage();
+    })
+    
 
     test('Add and remove an item from the cart', async ({ page }) => {
         await inventoryPage.verifyInventoryPage(); 

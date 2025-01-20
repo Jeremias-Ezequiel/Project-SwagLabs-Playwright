@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test'
 import { BasePage } from '../pages/BasePage';
-import { LoginPage } from '../pages/LoginPage';
-import {credentials} from './config'
 import { BurgerMenuPage } from '../pages/BurgerMenuPage';
+import { LoginPage } from '../pages/LoginPage';
+import { validCredential } from '../models/LoginCredentialModel';
 import { NavBarPage } from '../pages/NavBarPage';
 import { InventoryPage } from '../pages/InventoryPage';
 
@@ -33,7 +33,7 @@ export class CommonFlows extends BasePage{
     }
 
     async logInSuccessfully() : Promise<void>{
-        const {username,password} = credentials.validCredentials; 
+        const {username,password} = validCredential; 
         await this.loginPage.fillLoginForm(username,password); 
     }
     
