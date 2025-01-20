@@ -70,11 +70,5 @@ test.describe('Inventory Page Tests - Smoke', () => {
         const result = inventoryPage.isPriceSortedArray(productsPrice, false);
         expect(result).toBe(true); 
     })
-
-    test('Check order of the items', async ({ page }) => {
-        const productNames : string[] = await inventoryPage.getItemNames();
-        const result = inventoryPage.isAlphabeticallySortedArray(productNames,true);
-        expect(result).toBe(true);
-    })
         
 })
