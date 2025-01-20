@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
-import { CheckoutCredentials } from "../models/CheckoutCredentialsModel";
+import { CheckoutCredential } from "../models/CheckoutCredentialModel";
 
 export class CheckoutStepOnePage extends BasePage{
     private checkoutTitle: Locator;
@@ -29,7 +29,7 @@ export class CheckoutStepOnePage extends BasePage{
         await this.expect(this.continueButton).toBeVisible(); 
     }
 
-    async fillCheckoutForm(information : CheckoutCredentials) : Promise<void>{
+    async fillCheckoutForm(information : CheckoutCredential) : Promise<void>{
         const {firstName, lastName, postalCode} = information;
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);

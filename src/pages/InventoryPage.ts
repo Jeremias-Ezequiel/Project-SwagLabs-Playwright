@@ -53,6 +53,7 @@ export class InventoryPage extends BasePage{
 
     // Adds a produc to the cart
     async addItemToCart(productName : string) : Promise<void>{
+        await this.verifyInventoryPage(); 
         const addButton = await this.findButton(productName,'Add to cart'); 
         if(addButton){
             await addButton.click(); 

@@ -13,7 +13,7 @@ test.describe('Inventory Page Tests - Smoke', () => {
         navBarPage = new NavBarPage(page); 
         inventoryPage = new InventoryPage(page); 
         commonFlows = new CommonFlows(page);
-        await page.goto('');
+
         await commonFlows.logInSuccessfully(); 
     })
 

@@ -6,9 +6,6 @@ export class LoginPage extends BasePage{
     private passwordInput: Locator;
     private loginInput: Locator;
     private errorMessage: Locator;
-    private usernameRequired: string;
-    private passwordRequired: string;
-    private userNotExist: string;
     
 
     constructor(page : Page){

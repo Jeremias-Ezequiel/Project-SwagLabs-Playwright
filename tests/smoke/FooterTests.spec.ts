@@ -9,7 +9,6 @@ test.describe('Footer Page Tests - Smoke', () => {
     test.beforeEach(async ({ page }) => {
         commonFlows = new CommonFlows(page);
         footerPage = new FooterBarPage(page);  
-        await page.goto(''); 
         await commonFlows.logInSuccessfully(); 
    })
 
