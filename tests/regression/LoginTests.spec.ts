@@ -4,7 +4,7 @@ import { LoginPage } from "../../src/pages/LoginPage";
 import { validCredential, UserCredential } from "../../src/models/LoginCredentialModel";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
 
-test.describe('Login page tests', () => {
+test.describe('Login Page Tests - Regression', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows; 
     let user : UserCredential; 
@@ -51,7 +51,7 @@ test.describe('Login page tests', () => {
         await loginPage.verifyErrorMessage(usernameRequired); 
     })
 
-    test('Attemps to log in with only the username field filled', async ({ page }) => {
+    test('Attempt to log in with only the username field filled', async ({ page }) => {
         user = {
             username : 'asdasd',
             password : ''
@@ -61,6 +61,18 @@ test.describe('Login page tests', () => {
 
         await loginPage.fillLoginForm(username,password); 
         await loginPage.verifyErrorMessage(passwordRequired); 
+    })
+
+    test('Attempt to log in with special characters in the username field filled', async ({ page }) => {
+        user = {
+            username : '#"#$',
+            password : validCredential.password
+        }
+        const {username,password} = user;  
+        const {userNotExist} = ErrorMessagesModel;
+
+        await loginPage.fillLoginForm(username,password); 
+        await loginPage.verifyErrorMessage(userNotExist); 
     })
     
 })
