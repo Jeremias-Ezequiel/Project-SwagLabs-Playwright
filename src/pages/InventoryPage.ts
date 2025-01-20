@@ -80,7 +80,7 @@ export class InventoryPage extends BasePage{
     }
 
     async getItemNames() : Promise<string[]>{
-        const itemDescriptions = await this.containerItems.locator('[data-test="inventory-item-description"]')
+        const itemDescriptions = this.containerItems.locator('[data-test="inventory-item-description"]')
         const quantity = await itemDescriptions.count(); 
         let itemNames : string[] = []; 
 
@@ -98,6 +98,25 @@ export class InventoryPage extends BasePage{
         return itemNames;
     }
 
+    async getItemPrices() : Promise<string[]> {
+        const itemDescriptions = this.containerItems.locator('[data-test="inventory-item-description"]'); 
+        const quantity = await itemDescriptions.count(); 
+        let itemPrices : string[] = []; 
+
+        for(let i = 0; i < quantity; i++){
+            const productPrice = await itemDescriptions
+                .nth(i)
+                .locator('[data-test="inventory-item-price"]')
+                .textContent();
+
+                if(productPrice !== null){
+                    itemPrices.push(productPrice); 
+                }
+        }
+
+        return itemPrices; 
+    } 
+
     isAlphabeticallySortedArray(array : string[], ascending : boolean = true) : boolean{
         
         const sortedArray = [...array].sort((a : string,b : string) => a.localeCompare(b))
@@ -107,6 +126,20 @@ export class InventoryPage extends BasePage{
         }
 
         return JSON.stringify(array) === JSON.stringify(sortedArray);
+    }
+
+    isPriceSortedArray(array : string[], ascending : boolean = true) : boolean{
+        const sortedArray = [...array].sort((a: string, b:string) => {
+            const priceA = parseFloat(a.replace('$','').trim());
+            const priceB = parseFloat(b.replace('$','').trim());
+            return priceA - priceB; 
+        })
+
+        if(!ascending){
+            sortedArray.reverse();
+        }
+
+        return JSON.stringify(array) === JSON.stringify(sortedArray); 
     }
 
 }

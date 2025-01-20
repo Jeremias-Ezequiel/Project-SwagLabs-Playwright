@@ -37,13 +37,13 @@ test.describe('Inventory Tests', () => {
         await inventoryPage.filterByOption(filter); 
         const productNames : string[] = await inventoryPage.getItemNames(); 
         const result = inventoryPage.isAlphabeticallySortedArray(productNames,false);
-        await expect(result).toBe(true);
+        expect(result).toBe(true);
     })
 
     test('Check order of the items', async ({ page }) => {
         const productNames : string[] = await inventoryPage.getItemNames();
         const result = inventoryPage.isAlphabeticallySortedArray(productNames,true);
-        await expect(result).toBe(true);
+        expect(result).toBe(true);
     })
         
 })
