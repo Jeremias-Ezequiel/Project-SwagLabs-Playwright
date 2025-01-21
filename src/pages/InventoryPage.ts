@@ -1,6 +1,5 @@
 import { Page, Locator } from "@playwright/test";
 import { BasePage } from "./BasePage";
-import { isBoxedPrimitive } from "util/types";
 
 export class InventoryPage extends BasePage{
     private filterDropdown: Locator;

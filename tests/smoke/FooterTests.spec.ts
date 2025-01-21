@@ -12,7 +12,7 @@ test.describe('Footer Page Tests - Smoke', () => {
         await commonFlows.logInSuccessfully(); 
    })
 
-   test('Verify Footer Page', async ({ page }) => {
+   test('Verify the footer page are displayed', async ({ page }) => {
         await footerPage.verifyFooterPage(); 
    })
     

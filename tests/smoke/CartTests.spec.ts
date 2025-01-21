@@ -16,11 +16,11 @@ test.describe('Cart Page Test - Smoke', () => {
         await commonFlows.goToCartPage(); 
     })
 
-    test('Verify cart page', async ({ page }) => {
+    test('Verify the cart page is displayed', async ({ page }) => {
         await cartPage.verifyCartPage(); 
     })
     
-    test('Verify that there is not products in the cart', async ({ page }) => {
+    test('Verify that there are not products in the cart', async ({ page }) => {
         const result = await cartPage.verifyElementsInCart();
         expect(result).toBe(false); 
     })
