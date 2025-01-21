@@ -1,13 +1,14 @@
 import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { LoginPage } from "../../src/pages/LoginPage"; 
-import { validCredential, UserCredential, invalidUsersCredentials } from "../../src/models/LoginCredentialModel";
+import { UserCredential } from "../../src/models/LoginCredentialModel";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
+import credential from "../../src/fixtures/userCredential.json";
 
 test.describe('Login Page Tests - Smoke', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows; 
-    let user : UserCredential; 
+    const {validCredential, invalidUsersCredentials, validUsersCredentials} = credential; 
     const inventoryURL : string = 'https://www.saucedemo.com/inventory.html';
 
     test.beforeEach(async ({ page }) => {
@@ -26,7 +27,6 @@ test.describe('Login Page Tests - Smoke', () => {
         await loginPage.verifyLoginPage(); 
     })
     
-    // DEJAR PARA REGRESSION
     test('Attempt to log in with invalid credentials', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.invalidUser;  
         const {userNotExist} = ErrorMessagesModel;
