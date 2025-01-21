@@ -1,0 +1,6 @@
+export const errorMessagesCheckoutOne = {
+    errorFirstName: "Error: First Name is required",
+    errorAllInput : "Error: First Name is required",
+    errorLastName : "Error: Last Name is required",
+    errorPostalCode : "Error: Postal Code is required",
+}
