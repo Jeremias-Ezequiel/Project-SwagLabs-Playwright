@@ -2,7 +2,7 @@ import { Page } from '@playwright/test'
 import { BasePage } from '../pages/BasePage';
 import { BurgerMenuPage } from '../pages/BurgerMenuPage';
 import { LoginPage } from '../pages/LoginPage';
-import { validCredential } from '../models/LoginCredentialModel';
+import credentials from '../fixtures/userCredential.json'
 import { NavBarPage } from '../pages/NavBarPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
@@ -14,7 +14,7 @@ export class CommonFlows extends BasePage{
     private inventoryPage: InventoryPage;
     private inventoryURL : string; 
     private cartPage : CartPage; 
-
+    
     constructor(page : Page){
         super(page);
         this.loginPage = new LoginPage(page);
@@ -22,7 +22,7 @@ export class CommonFlows extends BasePage{
         this.navBarPage = new NavBarPage(page);
         this.inventoryPage = new InventoryPage(page);
         this.cartPage = new CartPage(page); 
-        this.inventoryURL = 'https://www.saucedemo.com/inventory.html';
+        this.inventoryURL = 'https://www.saucedemo.com/inventory.html'; 
     }
 
     async goToLoginPage() : Promise<void>{
@@ -37,7 +37,7 @@ export class CommonFlows extends BasePage{
 
     async logInSuccessfully() : Promise<void>{
         await this.goToLoginPage(); 
-        const {username,password} = validCredential; 
+        const {username,password} = credentials.validCredential; 
         await this.loginPage.fillLoginForm(username,password); 
     }
     

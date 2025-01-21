@@ -1,7 +1,6 @@
 import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { LoginPage } from "../../src/pages/LoginPage"; 
-import { UserCredential } from "../../src/models/LoginCredentialModel";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
 import credential from "../../src/fixtures/userCredential.json";
 

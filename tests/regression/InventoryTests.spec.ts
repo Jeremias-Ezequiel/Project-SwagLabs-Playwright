@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { NavBarPage } from "../../src/pages/NavBarPage";
 import { InventoryPage } from "../../src/pages/InventoryPage";
 import { CommonFlows } from "../../src/utils/CommonFlows";
-import { FilterOptions } from "../../src/models/FilterProductModel"; 
+import { filterOptions } from "../../src/models/FilterProductModel"; 
 
 test.describe('Inventory Page Tests - Regression', () => {
     let commonFlows : CommonFlows;  
@@ -36,7 +36,7 @@ test.describe('Inventory Page Tests - Regression', () => {
     })
     
     test('Filter the products by Name (Z to A)', async ({ page }) => {
-        const filter = FilterOptions.ZtoA; 
+        const filter = filterOptions.ZtoA; 
         await inventoryPage.openFilterDropdown(); 
         await inventoryPage.filterByOption(filter); 
         const productNames : string[] = await inventoryPage.getItemNames(); 

@@ -9,6 +9,7 @@ export class CheckoutStepOnePage extends BasePage{
     private lastNameInput: Locator;
     private cancelButton: Locator;
     private continueButton: Locator;
+    private errorMessageDiv: Locator;
 
     constructor(page : Page){
         super(page);
@@ -18,6 +19,7 @@ export class CheckoutStepOnePage extends BasePage{
         this.postalCodeInput = this.page.locator('[data-test="postalCode"]');
         this.cancelButton = this.page.locator('[data-test="cancel"]'); 
         this.continueButton = this.page.locator('[data-test="continue"]');
+        this.errorMessageDiv = this.page.locator('[data-test="error"]'); 
     }
 
     async verifyCheckoutStepOnePage() : Promise<void>{
@@ -34,5 +36,10 @@ export class CheckoutStepOnePage extends BasePage{
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);
         await this.postalCodeInput.fill(postalCode);
+        await this.continueButton.click();
+    }
+
+    async verifyErrorMessage(errorMessageExpected: string): Promise<void> {
+        await super.verifyErrorMessage(errorMessageExpected,this.errorMessageDiv);
     }
 }

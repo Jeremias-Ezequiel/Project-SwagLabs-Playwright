@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { NavBarPage } from "../../src/pages/NavBarPage";
 import { InventoryPage } from "../../src/pages/InventoryPage";
 import { CommonFlows } from "../../src/utils/CommonFlows";
-import { FilterOptions } from "../../src/models/FilterProductModel";
+import { filterOptions } from "../../src/models/FilterProductModel";
 
 test.describe('Inventory Page Tests - Smoke', () => {
     let commonFlows : CommonFlows;  
@@ -36,7 +36,7 @@ test.describe('Inventory Page Tests - Smoke', () => {
     })
     
     test('Filter the products by Name (Z to A)', async ({ page }) => {
-        const filter = FilterOptions.ZtoA;
+        const filter = filterOptions.ZtoA;
         await inventoryPage.openFilterDropdown(); 
         await inventoryPage.filterByOption(filter); 
         const productNames = await inventoryPage.getItemNames(); 
@@ -45,7 +45,7 @@ test.describe('Inventory Page Tests - Smoke', () => {
     })
 
     test('Filter the products by Name (A to Z)', async ({ page }) => {
-        const filter = FilterOptions.AtoZ;
+        const filter = filterOptions.AtoZ;
         await inventoryPage.openFilterDropdown(); 
         await inventoryPage.filterByOption(filter); 
         const productNames = await inventoryPage.getItemNames(); 
@@ -54,7 +54,7 @@ test.describe('Inventory Page Tests - Smoke', () => {
     })
 
     test('Filter the products by Price low to high', async ({ page }) => {
-        const filter = FilterOptions.LowToHigh;
+        const filter = filterOptions.LowToHigh;
         await inventoryPage.openFilterDropdown(); 
         await inventoryPage.filterByOption(filter); 
         const productsPrice = await inventoryPage.getItemPrices(); 
@@ -63,7 +63,7 @@ test.describe('Inventory Page Tests - Smoke', () => {
     })
     
     test('Filter the products by Price high to low', async ({ page }) => {
-        const filter = FilterOptions.HighToLow;
+        const filter = filterOptions.HighToLow;
         await inventoryPage.openFilterDropdown(); 
         await inventoryPage.filterByOption(filter); 
         const productsPrice = await inventoryPage.getItemPrices(); 

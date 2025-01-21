@@ -2,12 +2,11 @@ import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { LoginPage } from "../../src/pages/LoginPage"; 
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
-import credential from "../../src/fixtures/userCredential.json"; 
+import {validCredential,invalidUsersCredentials,validUsersCredentials} from "../../src/fixtures/userCredential.json"; 
 
 test.describe('Login Page Tests - Regression', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows;  
-    const {validCredential, invalidUsersCredentials, validUsersCredentials} = credential; 
     const inventoryURL : string = 'https://www.saucedemo.com/inventory.html';
 
     test.beforeEach(async ({ page }) => {

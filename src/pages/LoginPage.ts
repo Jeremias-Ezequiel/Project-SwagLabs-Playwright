@@ -6,7 +6,6 @@ export class LoginPage extends BasePage{
     private passwordInput: Locator;
     private loginInput: Locator;
     private errorMessage: Locator;
-    
 
     constructor(page : Page){
         super(page); 
@@ -32,12 +31,8 @@ export class LoginPage extends BasePage{
         await this.loginInput.click();
     }
 
-    async verifyErrorMessage(errorMessageExpected : string) : Promise<void>{
-        await this.errorMessage.isVisible(); 
-        
-        const message = await this.errorMessage.textContent(); 
-
-        await this.expect(message).toEqual(errorMessageExpected); 
+    async verifyErrorMessage(errorMessageExpected : string,) : Promise<void>{
+        await super.verifyErrorMessage(errorMessageExpected, this.errorMessage);
     }
     
 }

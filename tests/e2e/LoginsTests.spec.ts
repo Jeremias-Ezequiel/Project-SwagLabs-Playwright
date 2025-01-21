@@ -1,8 +1,9 @@
 import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { LoginPage } from "../../src/pages/LoginPage"; 
-import { validCredential, UserCredential } from "../../src/models/LoginCredentialModel";
+import { UserCredential } from "../../src/models/LoginCredentialModel";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
+import {validCredential} from "../../src/fixtures/userCredential.json"; 
 
 test.describe('Login page tests', () => {
     let loginPage : LoginPage;
