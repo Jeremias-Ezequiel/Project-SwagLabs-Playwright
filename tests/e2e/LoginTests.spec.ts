@@ -4,7 +4,7 @@ import { LoginPage } from "../../src/pages/LoginPage";
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
 import {validCredential,invalidUsersCredentials,validUsersCredentials} from "../../src/fixtures/userCredential.json"; 
 
-test.describe('Login Page Tests - Regression', () => {
+test.describe('Login Page Tests', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows;  
     const inventoryURL : string = 'https://www.saucedemo.com/inventory.html';
@@ -14,40 +14,40 @@ test.describe('Login Page Tests - Regression', () => {
         commonFlows = new CommonFlows(page);  
         await commonFlows.goToLoginPage();
     })
+    
+    test('[@smoke@regression]Verify Login page', async ({ page }) => {
+        await loginPage.verifyLoginPage(); 
+    })
 
-    test('Log in with valid credentials', async ({ page }) => {
+    test('[@smoke@regression]Log in with valid credentials', async ({ page }) => {
         const {username, password} = validCredential;
         await loginPage.fillLoginForm(username,password);
         await expect(page).toHaveURL(inventoryURL);
-    })
-        
-    test('Verify Login page', async ({ page }) => {
-        await loginPage.verifyLoginPage(); 
-    })
+    })    
     
     // DEJAR PARA REGRESSION
-    test('Attempt to log in with invalid credentials', async ({ page }) => {
+    test('[@smoke@regression]Attempt to log in with invalid credentials', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.invalidUser;  
         const {userNotExist} = ErrorMessagesModel; 
         await loginPage.fillLoginForm(username,password);
         await loginPage.verifyErrorMessage(userNotExist); 
     })
 
-    test('Attempt to log in with only the password field filled', async ({ page }) => {
+    test('[@regression]Attempt to log in with only the password field filled', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.missingUsername; 
         const {usernameRequired} = ErrorMessagesModel;
         await loginPage.fillLoginForm(username,password); 
         await loginPage.verifyErrorMessage(usernameRequired); 
     })
 
-    test('Attempt to log in with only the username field filled', async ({ page }) => {
+    test('[@regression]Attempt to log in with only the username field filled', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.missingPassword;  
         const {passwordRequired} = ErrorMessagesModel;
         await loginPage.fillLoginForm(username,password); 
         await loginPage.verifyErrorMessage(passwordRequired); 
     })
 
-    test('Attempt to log in with special characters in the username field filled', async ({ page }) => {
+    test('[@regression]Attempt to log in with special characters in the username field filled', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.specialCharactersUsername; 
         const {userNotExist} = ErrorMessagesModel;
         await loginPage.fillLoginForm(username,password); 
@@ -59,7 +59,7 @@ test.describe('Login Page Tests - Regression', () => {
         validUsersCredentials.forEach((credential) => {
             const {username, password} = credential;
     
-            test(`Login test for user: ${username}`, async ({ page }) => {
+            test(`[@regression]Login test for user: ${username}`, async ({ page }) => {
                 await loginPage.fillLoginForm(username,password);
                 await expect(page).toHaveURL(inventoryURL);
             }); 
