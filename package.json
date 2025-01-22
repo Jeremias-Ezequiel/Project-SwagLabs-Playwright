@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test" : "npx playwright test",
+    "test:smoke" : "npx playwright test --grep \"@smoke\"",
+    "test:regression"  : "npx playwright test --grep \"@regression\"",
+    "allure:open" : "allure serve allure-results"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.5",
+    "allure-playwright": "^3.0.9"
   }
 }
