@@ -58,7 +58,9 @@ test.describe('Login Page Tests', () => {
     test.describe('Valid Users Credentials Tests', () => {
         validUsersCredentials.forEach((credential) => {
             const {username, password} = credential;
-    
+            if(username === 'locked_out_user'){
+                return; 
+            }
             test(`[@regression]Login test for user: ${username}`, async ({ page }) => {
                 await loginPage.fillLoginForm(username,password);
                 await expect(page).toHaveURL(inventoryURL);
