@@ -12,7 +12,8 @@ test.describe('Checkout Step One Test', () => {
     let checkoutStepOne : CheckoutStepOnePage; 
     let checkoutStepTwo : CheckoutStepTwoPage; 
     const {errorAllInput,errorFirstName,errorLastName,errorPostalCode} = errorMessagesCheckoutOne; 
-    const {missingFirstName,missingLastName,missingPostalCode,allMissingInput,specialCharacterFirstName,specialCharacterLastName,specialCharacterPostalCode} = checkoutCredentials; 
+    const {missingFirstName,missingLastName,missingPostalCode,allMissingInput,specialCharacterFirstName,
+        specialCharacterLastName,specialCharacterPostalCode} = checkoutCredentials; 
 
     test.beforeEach(async ({ page }) => {
         commonFlows = new CommonFlows(page);
@@ -20,6 +21,7 @@ test.describe('Checkout Step One Test', () => {
         checkoutStepOne = new CheckoutStepOnePage(page); 
         checkoutStepTwo = new CheckoutStepTwoPage(page); 
 
+        await commonFlows.loginWithCookies(page);
         await commonFlows.goToCartPage(); 
         await cartPage.clickCheckout(); 
     })

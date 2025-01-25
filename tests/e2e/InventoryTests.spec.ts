@@ -14,7 +14,9 @@ test.describe('Inventory Page Tests', () => {
         inventoryPage = new InventoryPage(page); 
         commonFlows = new CommonFlows(page);
         
-        await commonFlows.logInSuccessfully();
+        // await commonFlows.logInSuccessfully();
+        await commonFlows.loginWithCookies(page);
+        await commonFlows.goToInventoryPage();
     })
 
     test('[@smoke@regression]Verify Inventory page test', async ({ page }) => {
@@ -22,13 +24,11 @@ test.describe('Inventory Page Tests', () => {
     })
 
     test('[@smoke@regression]Add item at the cart', async ({ page }) => {
-        await inventoryPage.verifyInventoryPage(); 
         await inventoryPage.addItemToCart("Sauce Labs Backpack"); 
         await navBarPage.verifyItemsInCartLogo("1"); 
     })
 
     test('[@smoke@regression]Add and remove an item from the cart', async ({ page }) => {
-        await inventoryPage.verifyInventoryPage(); 
         await inventoryPage.addItemToCart("Sauce Labs Backpack");
         await inventoryPage.removeItemFromCart("Sauce Labs Backpack"); 
         await navBarPage.verifyShoppingCartLogoIsEmpty(); 

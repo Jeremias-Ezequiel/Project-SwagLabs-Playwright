@@ -22,12 +22,8 @@ export class LoginPage extends BasePage{
     }
 
     async fillLoginForm(username : string, password : string) : Promise<void>{
-        await this.verifyLoginPage(); 
-
         await this.fillInput(this.usernameInput, username);
-        
         await this.fillInput(this.passwordInput, password);
-
         await this.loginInput.click();
     }
 

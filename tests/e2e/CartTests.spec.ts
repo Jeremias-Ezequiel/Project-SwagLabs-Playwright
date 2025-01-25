@@ -1,18 +1,16 @@
 import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../../src/utils/CommonFlows";
 import { CartPage } from "../../src/pages/CartPage";
-import { InventoryPage } from "../../src/pages/InventoryPage";
 
 test.describe('Cart Page Test', () => {
     let commonFlows : CommonFlows;  
     let cartPage : CartPage; 
-    let inventoryPage : InventoryPage; 
 
     test.beforeEach(async ({ page }) => {
         commonFlows = new CommonFlows(page);
         cartPage = new CartPage(page);  
-        inventoryPage = new InventoryPage(page); 
 
+        await commonFlows.loginWithCookies(page);
         await commonFlows.goToCartPage(); 
     })
 

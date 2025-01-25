@@ -35,7 +35,7 @@ export class NavBarPage extends BasePage{
             throw new Error('The numbers of items added to the cart must be greather than 1');
         } 
         const quantity = await this.itemsInCartLink.textContent();
-        await this.expect(quantity, "The number of items added does not match the expected quantity").toEqual(quantityItems); 
+        this.expect(quantity, "The number of items added does not match the expected quantity").toEqual(quantityItems); 
     }
 
     async verifyShoppingCartLogoIsEmpty() : Promise<void>{

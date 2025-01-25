@@ -6,6 +6,7 @@ export class InventoryPage extends BasePage{
     private containerItems: Locator;
     private productsLabel: Locator;
     private options: Set<string>;
+    private URL = 'https://www.saucedemo.com/inventory.html'; 
 
     constructor(page : Page){
         super(page);
@@ -29,7 +30,6 @@ export class InventoryPage extends BasePage{
 
     // Opens the filter dropdown menu
     async openFilterDropdown() : Promise<void>{
-        await this.filterDropdown.isVisible();
         await this.clicElement(this.filterDropdown); 
     }
 
@@ -52,22 +52,20 @@ export class InventoryPage extends BasePage{
 
     // Adds a produc to the cart
     async addItemToCart(productName : string) : Promise<void>{
-        await this.verifyInventoryPage(); 
-        const addButton = await this.findButton(productName,'Add to cart'); 
-        if(addButton){
-            await addButton.click(); 
-        }else{
-            throw new Error(`Product "${productName}" not found`)
-        }
+        await this.clickProducButton(productName,'Add to cart'); 
     }
 
     // Removes a product from the cart
     async removeItemFromCart(productName : string) : Promise<void>{
-        const removeButton = await this.findButton(productName,'Remove');
-        if(removeButton){
-            await removeButton.click(); 
+        await this.clickProducButton(productName,'Remove'); 
+    }
+
+    async clickProducButton(productName : string, buttonText : string) : Promise<void> {
+        const button = await this.findButton(productName,buttonText); 
+        if(button){
+            await button.click(); 
         }else{
-            throw new Error(`Product "${productName}" not found`)
+            throw new Error(`Product "${productName}" not found or "${buttonText}" button not available`)
         }
     }
     
@@ -142,4 +140,7 @@ export class InventoryPage extends BasePage{
         return JSON.stringify(array) === JSON.stringify(sortedArray); 
     }
 
+    getUrl(){
+        return this.URL; 
+    }
 }

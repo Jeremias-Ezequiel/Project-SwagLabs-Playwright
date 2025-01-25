@@ -10,6 +10,7 @@ export class CheckoutStepOnePage extends BasePage{
     private cancelButton: Locator;
     private continueButton: Locator;
     private errorMessageDiv: Locator;
+    private URL = 'https://www.saucedemo.com/checkout-step-one.html'; 
 
     constructor(page : Page){
         super(page);
@@ -41,5 +42,9 @@ export class CheckoutStepOnePage extends BasePage{
 
     async verifyErrorMessage(errorMessageExpected: string): Promise<void> {
         await super.verifyErrorMessage(errorMessageExpected,this.errorMessageDiv);
+    }
+
+    getUrl(){
+        return this.URL; 
     }
 }

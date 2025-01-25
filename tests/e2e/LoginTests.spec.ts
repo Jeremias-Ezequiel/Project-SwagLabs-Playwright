@@ -3,15 +3,18 @@ import { CommonFlows } from "../../src/utils/CommonFlows";
 import { LoginPage } from "../../src/pages/LoginPage"; 
 import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
 import {validCredential,invalidUsersCredentials,validUsersCredentials} from "../../src/fixtures/userCredential.json"; 
+import { InventoryPage } from "../../src/pages/InventoryPage";
 
 test.describe('Login Page Tests', () => {
     let loginPage : LoginPage;
     let commonFlows : CommonFlows;  
-    const inventoryURL : string = 'https://www.saucedemo.com/inventory.html';
+    let inventoryPage : InventoryPage;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
-        commonFlows = new CommonFlows(page);  
+        commonFlows = new CommonFlows(page);
+        inventoryPage = new InventoryPage(page);
+        
         await commonFlows.goToLoginPage();
     })
     
@@ -22,7 +25,7 @@ test.describe('Login Page Tests', () => {
     test('[@smoke@regression]Log in with valid credentials', async ({ page }) => {
         const {username, password} = validCredential;
         await loginPage.fillLoginForm(username,password);
-        await expect(page).toHaveURL(inventoryURL);
+        await expect(page).toHaveURL(inventoryPage.getUrl());
     })    
     
     // DEJAR PARA REGRESSION
@@ -63,7 +66,7 @@ test.describe('Login Page Tests', () => {
             }
             test(`[@regression]Login test for user: ${username}`, async ({ page }) => {
                 await loginPage.fillLoginForm(username,password);
-                await expect(page).toHaveURL(inventoryURL);
+                await expect(page).toHaveURL(inventoryPage.getUrl());
             }); 
             
         });
