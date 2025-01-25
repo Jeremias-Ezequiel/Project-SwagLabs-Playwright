@@ -25,6 +25,10 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        env :  
+          COOKIE_NAME : ${{secrets.COOKIE_NAME}}
+          COOKIE_VALUE : ${{secrets.COOKIE_VALUE}}
+          COOKIE_DOMAIN : ${{secrets.COOKIE_DOMAIN}}
         run: npx playwright test
 
       - uses: actions/upload-artifact@v4

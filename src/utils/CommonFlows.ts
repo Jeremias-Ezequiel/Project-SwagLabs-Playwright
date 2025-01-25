@@ -63,9 +63,8 @@ export class CommonFlows extends BasePage{
         const cookieName = process.env.COOKIE_NAME;  
         const cookieValue = process.env.COOKIE_VALUE; 
         const cookieDomain = process.env.COOKIE_DOMAIN;
-        const cookiePath = process.env.COOKIE_PATH;
 
-        if(!cookieName || !cookieDomain || !cookiePath || !cookieValue){
+        if(!cookieName || !cookieDomain || !cookieValue){
             throw new Error('Environment variables for cookies are missing.');
         }
 
@@ -73,7 +72,7 @@ export class CommonFlows extends BasePage{
             name : cookieName,
             value : cookieValue,
             domain : cookieDomain,
-            path : cookiePath
+            path : '/'
         }])
     }
 }
