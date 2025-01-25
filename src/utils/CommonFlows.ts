@@ -12,7 +12,6 @@ export class CommonFlows extends BasePage{
     private burguerMenu: BurgerMenuPage;
     private navBarPage: NavBarPage;
     private inventoryPage: InventoryPage;
-    private inventoryURL : string; 
     private cartPage : CartPage; 
     
     constructor(page : Page){
@@ -22,17 +21,26 @@ export class CommonFlows extends BasePage{
         this.navBarPage = new NavBarPage(page);
         this.inventoryPage = new InventoryPage(page);
         this.cartPage = new CartPage(page); 
-        this.inventoryURL = 'https://www.saucedemo.com/inventory.html'; 
     }
 
+    // Flows  for e2e tests
+    async flowInventoryPage(){
+        await this.logInSuccessfully(); 
+    } 
+
+    async flowCartPage(){
+        await this.flowInventoryPage(); 
+        await this.navBarPage.goToShoopingCartPage();
+    }
+
+    // Go to singles pages
     async goToLoginPage() : Promise<void>{
         await this.page.goto('');
         await this.loginPage.verifyLoginPage();
     }
 
-    private async goToInventoryPage() : Promise<void>{
-        await this.page.goto(this.inventoryURL);
-        await this.inventoryPage.verifyInventoryPage(); 
+    async goToInventoryPage() : Promise<void>{
+        await this.page.goto(this.inventoryPage.getUrl());
     }
 
     async logInSuccessfully() : Promise<void>{
@@ -45,12 +53,27 @@ export class CommonFlows extends BasePage{
         await this.goToInventoryPage(); 
         await this.navBarPage.openBurgerMenu();
         await this.burguerMenu.logOut();
-        await this.loginPage.verifyLoginPage();
     }
 
     async goToCartPage(){
-        await this.logInSuccessfully(); 
-        await this.navBarPage.verifyNavBarPage(); 
-        await this.navBarPage.goToShoopingCartPage();
+        await this.page.goto(this.cartPage.getUrl());
+    }
+
+    async loginWithCookies(page : Page){
+        const cookieName = process.env.COOKIE_NAME;  
+        const cookieValue = process.env.COOKIE_VALUE; 
+        const cookieDomain = process.env.COOKIE_DOMAIN;
+        const cookiePath = process.env.COOKIE_PATH;
+
+        if(!cookieName || !cookieDomain || !cookiePath || !cookieValue){
+            throw new Error('Environment variables for cookies are missing.');
+        }
+
+        await page.context().addCookies([{
+            name : cookieName,
+            value : cookieValue,
+            domain : cookieDomain,
+            path : cookiePath
+        }])
     }
 }
