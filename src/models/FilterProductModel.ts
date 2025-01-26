@@ -1,6 +1,0 @@
-export const filterOptions = {
-    AtoZ : 'Name (A to Z)',
-    ZtoA : 'Name (Z to A)',
-    LowToHigh : 'Price (low to high)',
-    HighToLow : 'Price (high to low)'
-}
