@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
-import { CommonFlows } from "../../src/utils/CommonFlows";
-import { CartPage } from "../../src/pages/CartPage";
+import { CommonFlows } from "../helper/CommonFlows";
+import { CartPage } from "../pages/CartPage";
 
 test.describe('Cart Page Test', () => {
     let commonFlows : CommonFlows;  

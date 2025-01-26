@@ -11,7 +11,8 @@
     "test:firefox": "npx playwright test --project=firefox",
     "test:webkit": "npx playwright test --project=webkit",
     "test:parallel": "npx playwright test --workers=4",
-    "allure:generate": "npx allure-playwright generate ./allure-results --clean -o ./allure-report",
+    "clean:allure-results" : "rm -rf allure-results",
+    "allure:generate": "allure generate ./allure-results --clean -o ./allure-report",
     "allure:open": "allure open ./allure-report"
   },
   "keywords": [],

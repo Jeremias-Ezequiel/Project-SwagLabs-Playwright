@@ -2,7 +2,7 @@ import { Page } from '@playwright/test'
 import { BasePage } from '../pages/BasePage';
 import { BurgerMenuPage } from '../pages/BurgerMenuPage';
 import { LoginPage } from '../pages/LoginPage';
-import credentials from '../fixtures/userCredential.json'
+import credentials from '../data/userCredential.json'
 import { NavBarPage } from '../pages/NavBarPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';

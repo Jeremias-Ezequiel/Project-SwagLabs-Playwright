@@ -1,6 +1,6 @@
 import test from "@playwright/test";
-import { CommonFlows } from "../../src/utils/CommonFlows";
-import { FooterBarPage } from "../../src/pages/FooterBarPage";
+import { CommonFlows } from "../helper/CommonFlows";
+import { FooterBarPage } from "../pages/FooterBarPage";
 
 test.describe('Footer Page Tests', () => {
     let commonFlows : CommonFlows; 

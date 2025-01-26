@@ -1,9 +1,9 @@
 import test, { expect } from "@playwright/test";
-import { CommonFlows } from "../../src/utils/CommonFlows";
-import { LoginPage } from "../../src/pages/LoginPage"; 
-import { ErrorMessagesModel } from "../../src/models/ErrorMessagesModel";
-import {validCredential,invalidUsersCredentials,validUsersCredentials} from "../../src/fixtures/userCredential.json"; 
-import { InventoryPage } from "../../src/pages/InventoryPage";
+import { CommonFlows } from "../helper/CommonFlows";
+import { LoginPage } from "../pages/LoginPage"; 
+import { ErrorMessagesModel } from "../data/ErrorMessagesModel";
+import {validCredential,invalidUsersCredentials,validUsersCredentials} from "../data/userCredential.json"; 
+import { InventoryPage } from "../pages/InventoryPage";
 
 test.describe('Login Page Tests', () => {
     let loginPage : LoginPage;

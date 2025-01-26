@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
-import { CheckoutCredential } from "../models/CheckoutCredentialModel";
+import { CheckoutCredential } from "../interfaces/CheckoutCredentialModel";
 
 export class CheckoutStepOnePage extends BasePage{
     private checkoutTitle: Locator;

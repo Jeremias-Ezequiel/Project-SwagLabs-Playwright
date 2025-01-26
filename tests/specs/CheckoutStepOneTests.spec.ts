@@ -1,10 +1,10 @@
 import test from "@playwright/test";
-import { CommonFlows } from "../../src/utils/CommonFlows";
-import { CartPage } from "../../src/pages/CartPage";
-import { CheckoutStepOnePage } from "../../src/pages/CheckoutStepOnePage";
-import {validCheckoutCredential,checkoutCredentials} from "../../src/fixtures/checkoutCredential.json"; 
-import {errorMessagesCheckoutOne} from "../../src/models/ErrorCheckoutStepOneModel"; 
-import { CheckoutStepTwoPage } from "../../src/pages/CheckoutStepTwoPage";
+import { CommonFlows } from "../helper/CommonFlows";
+import { CartPage } from "../pages/CartPage";
+import { CheckoutStepOnePage } from "../pages/CheckoutStepOnePage";
+import {validCheckoutCredential,checkoutCredentials} from "../data/checkoutCredential.json"; 
+import {errorMessagesCheckoutOne} from "../data/ErrorCheckoutStepOneModel"; 
+import { CheckoutStepTwoPage } from "../pages/CheckoutStepTwoPage";
 
 test.describe('Checkout Step One Test', () => {
     let commonFlows : CommonFlows; 

@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { NavBarPage } from "../../src/pages/NavBarPage";
-import { InventoryPage } from "../../src/pages/InventoryPage";
-import { CommonFlows } from "../../src/utils/CommonFlows";
-import { filterOptions } from "../../src/models/FilterProductModel"; 
+import { NavBarPage } from "../pages/NavBarPage";
+import { InventoryPage } from "../pages/InventoryPage";
+import { CommonFlows } from "../helper/CommonFlows";
+import { filterOptions } from "../data/FilterProductModel"; 
 
 test.describe('Inventory Page Tests', () => {
     let commonFlows : CommonFlows;  
