@@ -33,7 +33,7 @@ jobs:
 
       - name: Generate Allure report 
         run: |
-          npx allure generate allure-results -o allure-report
+          npx allure generate ./allure-results -o ./allure-report
 
       - name: Deploy report to GitHub Pages 
         uses: peaceiris/actions-gh-pages@v3

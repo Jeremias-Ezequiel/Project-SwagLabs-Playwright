@@ -72,7 +72,7 @@ export class CommonFlows extends BasePage{
             name : cookieName,
             value : cookieValue,
             domain : cookieDomain,
-            path : '/'
+            path : "/"
         }])
     }
 }
