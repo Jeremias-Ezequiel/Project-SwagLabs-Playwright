@@ -60,9 +60,9 @@ export class CommonFlows extends BasePage{
     }
 
     async loginWithCookies(page : Page){
-        const cookieName = process.env.COOKIE_NAME;  
-        const cookieValue = process.env.COOKIE_VALUE; 
-        const cookieDomain = process.env.COOKIE_DOMAIN;
+        const cookieName = process.env.COOKIE_NAME || "session-username";  
+        const cookieValue = process.env.COOKIE_VALUE || "standard_user"; 
+        const cookieDomain = process.env.COOKIE_DOMAIN || "www.saucedemo.com";
 
         if(!cookieName || !cookieDomain || !cookieValue){
             throw new Error('Environment variables for cookies are missing.');
