@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { NavBarPage } from "../pages/NavBarPage";
 import { InventoryPage } from "../pages/InventoryPage";
 import { CommonFlows } from "../helper/CommonFlows";
-import { filterOptions } from "../data/FilterProductModel"; 
+import { filterOptions } from "../data/filterProductOptions.json"; 
 
 test.describe('Inventory Page Tests', () => {
     let commonFlows : CommonFlows;  

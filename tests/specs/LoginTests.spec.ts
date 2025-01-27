@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { CommonFlows } from "../helper/CommonFlows";
 import { LoginPage } from "../pages/LoginPage"; 
-import { ErrorMessagesModel } from "../data/ErrorMessagesModel";
+import { errorMessagesLogin } from "../data/errorMessagesLogin.json";
 import {validCredential,invalidUsersCredentials,validUsersCredentials} from "../data/userCredential.json"; 
 import { InventoryPage } from "../pages/InventoryPage";
 
@@ -31,28 +31,28 @@ test.describe('Login Page Tests', () => {
     // DEJAR PARA REGRESSION
     test('[@smoke@regression]Attempt to log in with invalid credentials', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.invalidUser;  
-        const {userNotExist} = ErrorMessagesModel; 
+        const {userNotExist} = errorMessagesLogin; 
         await loginPage.fillLoginForm(username,password);
         await loginPage.verifyErrorMessage(userNotExist); 
     })
 
     test('[@regression]Attempt to log in with only the password field filled', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.missingUsername; 
-        const {usernameRequired} = ErrorMessagesModel;
+        const {usernameRequired} = errorMessagesLogin;
         await loginPage.fillLoginForm(username,password); 
         await loginPage.verifyErrorMessage(usernameRequired); 
     })
 
     test('[@regression]Attempt to log in with only the username field filled', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.missingPassword;  
-        const {passwordRequired} = ErrorMessagesModel;
+        const {passwordRequired} = errorMessagesLogin;
         await loginPage.fillLoginForm(username,password); 
         await loginPage.verifyErrorMessage(passwordRequired); 
     })
 
     test('[@regression]Attempt to log in with special characters in the username field filled', async ({ page }) => {
         const {username,password} = invalidUsersCredentials.specialCharactersUsername; 
-        const {userNotExist} = ErrorMessagesModel;
+        const {userNotExist} = errorMessagesLogin;
         await loginPage.fillLoginForm(username,password); 
         await loginPage.verifyErrorMessage(userNotExist); 
     })

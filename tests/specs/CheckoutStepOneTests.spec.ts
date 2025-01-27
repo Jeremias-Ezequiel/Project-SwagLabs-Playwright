@@ -3,7 +3,7 @@ import { CommonFlows } from "../helper/CommonFlows";
 import { CartPage } from "../pages/CartPage";
 import { CheckoutStepOnePage } from "../pages/CheckoutStepOnePage";
 import {validCheckoutCredential,checkoutCredentials} from "../data/checkoutCredential.json"; 
-import {errorMessagesCheckoutOne} from "../data/ErrorCheckoutStepOneModel"; 
+import {errorMessagesCheckout} from "../data/errorMessagesCheckout.json";  
 import { CheckoutStepTwoPage } from "../pages/CheckoutStepTwoPage";
 
 test.describe('Checkout Step One Test', () => {
@@ -11,7 +11,7 @@ test.describe('Checkout Step One Test', () => {
     let cartPage : CartPage; 
     let checkoutStepOne : CheckoutStepOnePage; 
     let checkoutStepTwo : CheckoutStepTwoPage; 
-    const {errorAllInput,errorFirstName,errorLastName,errorPostalCode} = errorMessagesCheckoutOne; 
+    const {errorAllInput,errorFirstName,errorLastName,errorPostalCode} = errorMessagesCheckout;  
     const {missingFirstName,missingLastName,missingPostalCode,allMissingInput,specialCharacterFirstName,
         specialCharacterLastName,specialCharacterPostalCode} = checkoutCredentials; 
 
